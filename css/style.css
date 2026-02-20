@@ -1,18 +1,15 @@
-/* ================= THIẾT LẬP CHUNG ================= */
-/* Khai báo các biến màu sắc dùng chung cho toàn bộ website */
 :root {
-  --primary-red: #d32f2f; /* Đỏ đô - Sang trọng, ấm cúng (Màu chủ đạo) */
-  --secondary-green: #2e7d32; /* Xanh lá bánh chưng (Màu điểm xuyết) */
-  --light-bg: #fff8e1; /* Vàng nhạt mâm xôi (Màu nền website) */
-  --text-color: #333333; /* Màu chữ cơ bản */
+  --primary-red: #d32f2f;
+  --secondary-green: #2e7d32;
+  --light-bg: #fff8e1;
+  --text-color: #333333;
 }
 
-/* Reset CSS cơ bản để đồng nhất trên mọi trình duyệt */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif; /* Font chữ hiện đại, dễ đọc */
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -21,7 +18,6 @@ body {
   line-height: 1.6;
 }
 
-/* ================= HEADER & MENU GÓC TRÊN ================= */
 header {
   background-color: var(--primary-red);
   color: white;
@@ -30,17 +26,35 @@ header {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  /* Cố định menu ở trên cùng khi cuộn trang */
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 header h1 {
-  font-family: "Playfair Display", serif; /* Font chữ có chân, mang tính cổ điển/truyền thống */
+  font-family: "Playfair Display", serif;
   font-size: 28px;
-  color: #ffd700; /* Màu vàng hoa mai */
+  color: #ffd700;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s;
+}
+
+.logo:hover img {
+  transform: rotate(360deg);
 }
 
 nav ul {
@@ -60,17 +74,15 @@ nav ul li a {
   padding-bottom: 5px;
 }
 
-/* Hiệu ứng khi di chuột vào menu hoặc khi đang ở trang đó */
 nav ul li a:hover,
 nav ul li a.active {
   color: #ffd700;
   border-bottom: 2px solid #ffd700;
 }
 
-/* ================= HERO BANNER (VIDEO BACKGROUND) ================= */
 .hero-banner {
   position: relative;
-  height: 100vh; /* Chiều cao phủ kín 100% màn hình hiển thị */
+  height: 73vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -78,7 +90,6 @@ nav ul li a.active {
   overflow: hidden;
 }
 
-/* Định dạng cho video nền */
 .bg-video {
   position: absolute;
   top: 50%;
@@ -88,11 +99,10 @@ nav ul li a.active {
   width: auto;
   height: auto;
   transform: translateX(-50%) translateY(-50%);
-  z-index: -2; /* Đẩy video ra lớp dưới cùng */
-  object-fit: cover; /* Giữ tỷ lệ khung hình video không bị méo */
+  z-index: -2;
+  object-fit: cover;
 }
 
-/* Lớp phủ màu đen mờ (40%) đè lên video để làm nổi bật chữ */
 .overlay {
   position: absolute;
   top: 0;
@@ -100,13 +110,12 @@ nav ul li a.active {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: -1; /* Nằm giữa video và chữ */
+  z-index: -1;
 }
 
-/* Nội dung chữ ở giữa Banner */
 .banner-content {
   position: relative;
-  z-index: 1; /* Nổi lên trên cùng */
+  z-index: 1;
   text-align: center;
   color: white;
   padding: 0 20px;
@@ -117,7 +126,7 @@ nav ul li a.active {
   font-size: 60px;
   margin-bottom: 10px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Đổ bóng để chữ không bị chìm vào nền */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .banner-content p {
@@ -126,7 +135,6 @@ nav ul li a.active {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Nút bấm (Button) "Khám phá ngay" */
 .banner-content .btn {
   display: inline-block;
   margin-top: 20px;
@@ -139,21 +147,332 @@ nav ul li a.active {
   font-size: 18px;
   transition:
     background-color 0.3s,
-    transform 0.2s; /* Hiệu ứng chuyển động mượt mà */
+    transform 0.2s;
 }
 
 .banner-content .btn:hover {
   background-color: white;
-  transform: scale(1.05); /* Hơi phóng to nhẹ khi đưa chuột vào */
+  transform: scale(1.05);
 }
 
-/* ================= FOOTER (CHÂN TRANG) ================= */
-footer {
+.greeting-text {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  color: #ffd700;
+  text-shadow:
+    2px 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.5);
+  margin: 20px 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      2px 2px 10px rgba(0, 0, 0, 0.5),
+      0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    text-shadow:
+      2px 2px 10px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(255, 215, 0, 0.8);
+    transform: scale(1.02);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: #ffd700;
+}
+
+.card h3 {
+  color: var(--secondary-green);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-family: "Playfair Display", serif;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--primary-red);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.card a:hover {
+  color: #b71c1c;
+}
+
+.food-thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro-section {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: -60px auto 30px;
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+}
+
+.intro-section h2 {
+  color: var(--primary-red);
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.intro-section > p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #555;
+}
+
+.content-page {
+  padding: 60px 0;
+  min-height: 60vh;
+  background-color: #fafafa;
+}
+
+.content-page h1 {
+  text-align: center;
+  color: var(--primary-red);
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.content-page h1::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: #ffd700;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.intro-large {
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 500;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  color: #444;
+  line-height: 1.8;
+}
+
+.content-block {
+  background: white;
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.content-block h2 {
+  color: var(--secondary-green);
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.content-block ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.content-block ul li {
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.content-block ul li::before {
+  content: "🌸";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 14px;
+}
+
+.author-info {
+  background: linear-gradient(135deg, var(--primary-red), #b71c1c);
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+  margin-top: 60px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
+}
+
+.author-info h3 {
+  color: #ffd700;
+  margin-bottom: 25px;
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+}
+
+.author-info p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  height: 250px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-red);
+  outline: none;
+}
+
+.btn-submit {
   background-color: var(--primary-red);
   color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  width: 100%;
+}
+
+.btn-submit:hover {
+  background-color: #b71c1c;
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: #ccc;
   text-align: center;
-  padding: 20px;
-  /* Dòng dưới tạo khoảng cách với nội dung phía trên, 
-       sau này chèn thêm nội dung giữa trang chủ thì footer sẽ nằm gọn ở đáy */
-  margin-top: 50px;
+  padding: 40px 20px;
+  margin-top: auto;
+  font-size: 0.9rem;
+  border-top: 5px solid var(--primary-red);
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+body.contact-bg {
+  background-image: url("../images/go_su_don_tet.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+body.contact-bg .content-page {
+  background-color: transparent !important;
+}
+
+body.contact-bg .content-block {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+  .greeting-text {
+    font-size: 2rem;
+  }
 }
