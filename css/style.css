@@ -50,27 +50,26 @@ header.scrolled {
   }
 }
 
-/* Hamburger Menu Button */
+/* Hamburger Menu Button (Ẩn trên Desktop) */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
   cursor: pointer;
+  gap: 5px;
   z-index: 1001;
 }
 
 .menu-toggle .bar {
+  width: 25px;
   height: 3px;
-  width: 100%;
-  background-color: white;
+  background-color: var(--gold);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
+/* Hiệu ứng xoay chữ X cho Hamburger */
 .menu-toggle.active .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .menu-toggle.active .bar:nth-child(2) {
@@ -78,7 +77,7 @@ header.scrolled {
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 header h1 {
@@ -341,7 +340,7 @@ body.home-page .hero-banner {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   display: flex;
-  flex-direction: column; /* Giúp các card cao bằng nhau */
+  flex-direction: column;
 }
 
 .card:hover {
@@ -367,7 +366,7 @@ body.home-page .hero-banner {
 
 .card p {
   color: #555;
-  flex-grow: 1; /* Chiếm khoảng trống còn lại để căn lề dưới đều nhau */
+  flex-grow: 1;
 }
 
 /* Thư viện ảnh */
@@ -395,7 +394,6 @@ body.home-page .hero-banner {
   transform: scale(1.1);
 }
 
-/* Các ảnh nổi bật trong bài viết (Dành cho trang Tết Bình Dương) */
 .featured-img {
   width: 100%;
   border-radius: 8px;
@@ -524,7 +522,7 @@ footer {
   padding: 25px 20px;
   font-size: 0.9rem;
   border-top: 4px solid var(--primary-red);
-  margin-top: auto; /* Đẩy footer xuống dưới cùng */
+  margin-top: auto;
 }
 
 /* ================= RESPONSIVE CAO CẤP ================= */
@@ -544,7 +542,7 @@ footer {
 
 /* Mobile & Tablet dọc (dưới 768px) */
 @media (max-width: 768px) {
-  /* Header: Dồn layout */
+  /* Header Layout */
   header {
     flex-direction: row;
     padding: 15px 20px;
@@ -555,13 +553,17 @@ footer {
   .logo img {
     height: 40px;
   }
-
   header h1 {
     font-size: 20px;
   }
 
+  /* Hiển thị Hamburger Menu */
   .menu-toggle {
-    display: flex;
+    display: flex; /* <-- Lỗi cũ là do chỗ này để none */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
   }
 
   /* Menu Mobile dạng Dropdown */
