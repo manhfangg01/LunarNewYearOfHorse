@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const header = document.querySelector("header");
   let lastScrollY = window.scrollY;
-  
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
       header.classList.add("scrolled");
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     lastScrollY = window.scrollY;
   });
-  
+
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll("nav ul li a");
 
@@ -103,10 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    nav.querySelectorAll("a").forEach(link => {
+    nav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-         menuToggle.classList.remove("active");
-         nav.classList.remove("active");
+        menuToggle.classList.remove("active");
+        nav.classList.remove("active");
       });
     });
   }
