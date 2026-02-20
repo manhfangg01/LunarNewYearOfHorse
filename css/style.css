@@ -1,0 +1,159 @@
+/* ================= THIẾT LẬP CHUNG ================= */
+/* Khai báo các biến màu sắc dùng chung cho toàn bộ website */
+:root {
+  --primary-red: #d32f2f; /* Đỏ đô - Sang trọng, ấm cúng (Màu chủ đạo) */
+  --secondary-green: #2e7d32; /* Xanh lá bánh chưng (Màu điểm xuyết) */
+  --light-bg: #fff8e1; /* Vàng nhạt mâm xôi (Màu nền website) */
+  --text-color: #333333; /* Màu chữ cơ bản */
+}
+
+/* Reset CSS cơ bản để đồng nhất trên mọi trình duyệt */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; /* Font chữ hiện đại, dễ đọc */
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* ================= HEADER & MENU GÓC TRÊN ================= */
+header {
+  background-color: var(--primary-red);
+  color: white;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Cố định menu ở trên cùng khi cuộn trang */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif; /* Font chữ có chân, mang tính cổ điển/truyền thống */
+  font-size: 28px;
+  color: #ffd700; /* Màu vàng hoa mai */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition:
+    color 0.3s,
+    border-bottom 0.3s;
+  padding-bottom: 5px;
+}
+
+/* Hiệu ứng khi di chuột vào menu hoặc khi đang ở trang đó */
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+/* ================= HERO BANNER (VIDEO BACKGROUND) ================= */
+.hero-banner {
+  position: relative;
+  height: 100vh; /* Chiều cao phủ kín 100% màn hình hiển thị */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Định dạng cho video nền */
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -2; /* Đẩy video ra lớp dưới cùng */
+  object-fit: cover; /* Giữ tỷ lệ khung hình video không bị méo */
+}
+
+/* Lớp phủ màu đen mờ (40%) đè lên video để làm nổi bật chữ */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1; /* Nằm giữa video và chữ */
+}
+
+/* Nội dung chữ ở giữa Banner */
+.banner-content {
+  position: relative;
+  z-index: 1; /* Nổi lên trên cùng */
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.banner-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Đổ bóng để chữ không bị chìm vào nền */
+}
+
+.banner-content p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Nút bấm (Button) "Khám phá ngay" */
+.banner-content .btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #ffd700;
+  color: var(--primary-red);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 18px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s; /* Hiệu ứng chuyển động mượt mà */
+}
+
+.banner-content .btn:hover {
+  background-color: white;
+  transform: scale(1.05); /* Hơi phóng to nhẹ khi đưa chuột vào */
+}
+
+/* ================= FOOTER (CHÂN TRANG) ================= */
+footer {
+  background-color: var(--primary-red);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  /* Dòng dưới tạo khoảng cách với nội dung phía trên, 
+       sau này chèn thêm nội dung giữa trang chủ thì footer sẽ nằm gọn ở đáy */
+  margin-top: 50px;
+}
