@@ -110,4 +110,51 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // ================= NAVIGATION ARROWS =================
+  const pages = [
+    { name: "Trang Chủ", url: "index.html" },
+    { name: "Giới Thiệu", url: "gioi-thieu.html" },
+    { name: "Tết Bình Dương", url: "tet-binh-duong.html" },
+    { name: "Ẩm Thực", url: "am-thuc.html" },
+    { name: "Văn Hóa", url: "van-hoa.html" },
+    { name: "Thư Viện", url: "thu-vien.html" },
+    { name: "Liên Hệ", url: "lien-he.html" },
+  ];
+
+  let currentPage = window.location.pathname.split("/").pop();
+  if (!currentPage || currentPage === "") currentPage = "index.html";
+  // Remove anchor/query string
+  currentPage = currentPage.split(/[?#]/)[0];
+
+  // Try to match partial if needed, but exact match is best for this structure
+  const currentIndex = pages.findIndex((p) => p.url === currentPage);
+
+  if (currentIndex !== -1) {
+    // Chỉ hiển thị mũi tên trái nếu không phải trang đầu
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1;
+      const prevPage = pages[prevIndex];
+
+      const prevArrow = document.createElement("a");
+      prevArrow.href = prevPage.url;
+      prevArrow.className = "page-nav-arrow page-nav-prev";
+      prevArrow.innerHTML = "&#10094;"; // <
+      prevArrow.setAttribute("data-title", `Quay lại: ${prevPage.name}`);
+      document.body.appendChild(prevArrow);
+    }
+
+    // Chỉ hiển thị mũi tên phải nếu không phải trang cuối
+    if (currentIndex < pages.length - 1) {
+      const nextIndex = currentIndex + 1;
+      const nextPage = pages[nextIndex];
+
+      const nextArrow = document.createElement("a");
+      nextArrow.href = nextPage.url;
+      nextArrow.className = "page-nav-arrow page-nav-next";
+      nextArrow.innerHTML = "&#10095;"; // >
+      nextArrow.setAttribute("data-title", `Tiếp theo: ${nextPage.name}`);
+      document.body.appendChild(nextArrow);
+    }
+  }
 });
